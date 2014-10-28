@@ -23,7 +23,12 @@ if(isDedicated) then {
 	};
 	"useBroadcaster" addPublicVariableEventHandler {
 		EAT_toClient = (_this select 1);
-		{(owner _x) publicVariableClient "EAT_toClient";} forEach entities "CAManBase";
+		{
+		if ((getPlayerUID( _x ) in AdminList) then {
+	
+			(owner _x) publicVariableClient "EAT_toClient";
+			};		
+		} forEach entities "CAManBase";
 	};
 	"EAT_baseExporter" addPublicVariableEventHandler {
 		"EATbaseExporter" callExtension (_this select 1);
