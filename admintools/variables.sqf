@@ -64,15 +64,16 @@ if(isDedicated) then {
 		if(_addRemove == "add") then {
 			_array = _array - ["add"];
 			helpQueue = helpQueue + _array;
+			diag_log format ["CHILD:666:Player *%1* needs assistance on the server!", _array];  //Epoch Linux Dedi - Slack WebHook Push Notification
 		} else {
 			_array = _array - ["remove"];
 			helpQueue = helpQueue - _array;
+			diag_log format ["CHILD:666:Player *%1 no longer* needs assistance on the server!", _array];  //Epoch Linux Dedi - Slack WebHook Push Notification
 		};
 		EAT_contactAdminClient = helpQueue;
 		{
 			if ((getPlayerUID _x) in AdminAndModList) then {	//check if the clientID(uniqueID) is an admin|mod, if : then set contactAdminC... 
 				(owner _x) publicVariableClient "EAT_contactAdminClient";
-				diag_log format ["CHILD:666:Player %1 needs assistance on the server!", _array];  //Epoch Linux Dedi - Slack WebHook Push Notification
 			};
 		} forEach entities "CAManBase";
 	};
