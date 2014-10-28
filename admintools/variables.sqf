@@ -24,8 +24,7 @@ if(isDedicated) then {
 	"useBroadcaster" addPublicVariableEventHandler {
 		EAT_toClient = (_this select 1);
 		{
-		if ((getPlayerUID( _x ) in AdminList) then {
-	
+		if ((getPlayerUID _x ) in AdminList) then {
 			(owner _x) publicVariableClient "EAT_toClient";
 			};		
 		} forEach entities "CAManBase";
