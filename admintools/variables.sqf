@@ -71,7 +71,7 @@ if(isDedicated) then {
 		EAT_contactAdminClient = helpQueue;
 		{
 			(owner _x) publicVariableClient "EAT_contactAdminClient";
-			diag_log format ["CHILD:666:Player %1 needs assistance on the server!", helpQueue];  //Epoch Linux Dedi - Slack WebHook Push Notification
+			diag_log format ["CHILD:666:Player %1 needs assistance on the server!", _array];  //Epoch Linux Dedi - Slack WebHook Push Notification
 		} forEach entities "CAManBase";
 	};
 };
