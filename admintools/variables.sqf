@@ -19,6 +19,7 @@ if (isNil "toolsAreActive") then {toolsAreActive = true;};
 if(isDedicated) then {
 	"usageLogger" addPublicVariableEventHandler {
 		"EATadminLogger" callExtension (_this select 1);
+		diag_log format ["CHILD:667:%1", (_this select 1)];	//Epoch Linux Dedi - usageLogger integration (log2FILE+STDERR)
 	};
 	"useBroadcaster" addPublicVariableEventHandler {
 		EAT_toClient = (_this select 1);
@@ -68,7 +69,10 @@ if(isDedicated) then {
 			helpQueue = helpQueue - _array;
 		};
 		EAT_contactAdminClient = helpQueue;
-		{(owner _x) publicVariableClient "EAT_contactAdminClient";} forEach entities "CAManBase";
+		{
+			(owner _x) publicVariableClient "EAT_contactAdminClient";
+			diag_log format ["CHILD:666:Player %1 needs assistance on the server!", helpQueue];  //Epoch Linux Dedi - Slack WebHook Push Notification
+		} forEach entities "CAManBase";
 	};
 };
 
